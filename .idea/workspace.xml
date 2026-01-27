@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="634bdaab-0ea4-44ca-a703-90597a3e727e" name="Changes" comment="Added main classes as base code">
+    <list default="true" id="634bdaab-0ea4-44ca-a703-90597a3e727e" name="Changes" comment="Adding class inits">
+      <change afterPath="$PROJECT_DIR$/.venv/GitProjectFiles/Main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.venv/GitProjectFiles/Classes.py" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/GitProjectFiles/Classes.py" afterDir="false" />
     </list>
@@ -89,7 +90,23 @@
       <option name="project" value="LOCAL" />
       <updated>1769512353093</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Adding class inits">
+      <option name="closed" value="true" />
+      <created>1769515036669</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1769515036669</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Adding class inits">
+      <option name="closed" value="true" />
+      <created>1769515058985</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1769515058985</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -117,6 +134,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added main classes as base code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added main classes as base code" />
+    <MESSAGE value="Adding class inits" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding class inits" />
   </component>
 </project>
