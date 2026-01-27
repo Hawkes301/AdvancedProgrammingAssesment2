@@ -1,0 +1,55 @@
+Key points to remember for assignment
+
+Submission:
+ 'Working Python code
+ 'Panopto video of app use
+ 'documentation not needed
+ 'Powerpoint of wireframe
+
+Needed specs:
+ 'New Classes
+ 'Inheritance
+ 'Polymorphism
+	System should:
+	 'Register offenders due for release
+	 'Record licence conditions and restrictions that must shape housing conditions
+	 'Search, filter, and allocate housing units based on suitability, availability, and
+	  compliance with conditions.
+	 'Track placements over time, including changes in licence status, housing transfers, 	  or breaches of conditions.
+ 	 'Generate reports for internal monitoring and inter-agency collaboration.
+
+Don't:
+	'Create a username
+	' make new users
+	'this is not a database
+Must:
+	'Generate around 4000 unique people
+	'main focus is on user interface
+	'rank RHU according to lisencee (sort not filter)
+	'Display cost to taxpayer
+	'Flag conflicts (leave control to AO)
+	'Provide a list of licensees due for release in each RHU (group by rhu)
+	'allow decreasing and increasing release time but increase must strigger warning
+	'Track costs by multiplying licensees by cost per licensee per day (pay button 	 	 resets)
+	'
+Classes:
+Rehabilitation Housing Units (class)
+	'Accommodation type (hostel / other)
+	'Area
+	'Capacity (NOT USED FOR MATCHING STILL RECORD)
+	'List of current licensees (view by name and expected exit date)
+	'Should be possible to transfer (function)
+	'Matching attributes should be editable (human judgement required)
+	'Sex accommodated
+		functions
+			'Ready for release list
+
+Licensee:
+	'Name (duplicates must be possible)
+	'Prison role ID
+	'Drug search required (Binary)
+	'IsMale (Binary) - RHU must accommodate men
+	'Sex offender (Binary)
+Area:
+	'Name
+	'Has school (Binary)
