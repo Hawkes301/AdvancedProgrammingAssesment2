@@ -46,6 +46,7 @@ class Rehabilitation_Housing_Unit:
                  Contact,
                  ManagementGroup
                  ):
+
         self.HousingCategory = HousingCategory
         self.Location = Location
         self.StayPeriod = StayPeriod

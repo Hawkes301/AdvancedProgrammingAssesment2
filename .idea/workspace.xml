@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="634bdaab-0ea4-44ca-a703-90597a3e727e" name="Changes" comment="Ammending class inits">
+    <list default="true" id="634bdaab-0ea4-44ca-a703-90597a3e727e" name="Changes" comment="Made some silly mistakes so ammending them here.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.venv/GitProjectFiles/Classes.py" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/GitProjectFiles/Classes.py" afterDir="false" />
     </list>
@@ -113,7 +113,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769517168960</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Made some silly mistakes so ammending them here.">
+      <option name="closed" value="true" />
+      <created>1769538026252</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1769538026252</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -143,6 +151,7 @@
     <MESSAGE value="Added main classes as base code" />
     <MESSAGE value="Adding class inits" />
     <MESSAGE value="Ammending class inits" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ammending class inits" />
+    <MESSAGE value="Made some silly mistakes so ammending them here." />
+    <option name="LAST_COMMIT_MESSAGE" value="Made some silly mistakes so ammending them here." />
   </component>
 </project>
