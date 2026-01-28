@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="634bdaab-0ea4-44ca-a703-90597a3e727e" name="Changes" comment="Remaking structure to simplify and compartmentalise">
+    <list default="true" id="634bdaab-0ea4-44ca-a703-90597a3e727e" name="Changes" comment="Adding main window pyside6">
+      <change afterPath="$PROJECT_DIR$/experiment.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.venv/GitProjectFiles/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/GitProjectFiles/Main.py" afterDir="false" />
     </list>
@@ -47,6 +48,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Python.Main.executor": "Run",
+    "Python.experiment.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "settings.editor.selected.configurable": "vcs.Git"
@@ -130,7 +132,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769614134732</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Adding main window pyside6">
+      <option name="closed" value="true" />
+      <created>1769628150232</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1769628150232</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -162,6 +172,7 @@
     <MESSAGE value="Ammending class inits" />
     <MESSAGE value="Made some silly mistakes so ammending them here." />
     <MESSAGE value="Remaking structure to simplify and compartmentalise" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remaking structure to simplify and compartmentalise" />
+    <MESSAGE value="Adding main window pyside6" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding main window pyside6" />
   </component>
 </project>
