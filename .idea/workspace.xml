@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="634bdaab-0ea4-44ca-a703-90597a3e727e" name="Changes" comment="Used QT designer to make main login window and dashboard">
+    <list default="true" id="634bdaab-0ea4-44ca-a703-90597a3e727e" name="Changes" comment="Login working and dashboard displays but not yet interactable">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.venv/GitProjectFiles/Licensee.py" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/GitProjectFiles/Licensee.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.venv/GitProjectFiles/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/GitProjectFiles/Main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -147,7 +148,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769631005238</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Login working and dashboard displays but not yet interactable">
+      <option name="closed" value="true" />
+      <created>1769636825522</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1769636825522</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -181,6 +190,7 @@
     <MESSAGE value="Remaking structure to simplify and compartmentalise" />
     <MESSAGE value="Adding main window pyside6" />
     <MESSAGE value="Used QT designer to make main login window and dashboard" />
-    <option name="LAST_COMMIT_MESSAGE" value="Used QT designer to make main login window and dashboard" />
+    <MESSAGE value="Login working and dashboard displays but not yet interactable" />
+    <option name="LAST_COMMIT_MESSAGE" value="Login working and dashboard displays but not yet interactable" />
   </component>
 </project>
