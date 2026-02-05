@@ -2,10 +2,22 @@ import sys
 from PySide6.QtWidgets import *
 from PySide6.QtCore import *
 from PySide6.QtGui import *
+from faker import Faker
+import random
+from datetime import timedelta
+from Allocation import OnLicenceHousingAllocationSystem, Location
+from Licensee import Licensee
+from RHU import Rehabilitation_Housing_Unit
+
+
+
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow,self).__init__()
         self.setupUiLogin(self,"Password")
+
+        # Licensee creation
+
     def setupUiLogin(self, LoginWindow,Password):
         if not LoginWindow.objectName():
             LoginWindow.setObjectName(u"LoginWindow")
@@ -198,7 +210,52 @@ class MainWindow(QMainWindow):
         self.pushButton_4.setText(QCoreApplication.translate("MainWindow", u"Edit", None))
         self.pushButton_5.setText(QCoreApplication.translate("MainWindow", u"Add new Licensee", None))
 
+    def setupUiLicenseeDetails(self, MainWindow):
+        if not MainWindow.objectName():
+            MainWindow.setObjectName(u"MainWindow")
+        MainWindow.resize(800, 600)
+        MainWindow.setBaseSize(QSize(900, 900))
+        self.centralwidget = QWidget(MainWindow)
+        self.centralwidget.setObjectName(u"centralwidget")
+        self.label = QLabel(self.centralwidget)
+        self.label.setObjectName(u"label")
+        self.label.setGeometry(QRect(360, 0, 81, 20))
+        self.label_2 = QLabel(self.centralwidget)
+        self.label_2.setObjectName(u"label_2")
+        self.label_2.setGeometry(QRect(570, 40, 49, 16))
+        self.DetailsList = QListView(self.centralwidget)
+        self.DetailsList.setObjectName(u"DetailsList")
+        self.DetailsList.setGeometry(QRect(25, 71, 371, 451))
+        self.listView_2 = QListView(self.centralwidget)
+        self.listView_2.setObjectName(u"listView_2")
+        self.listView_2.setGeometry(QRect(400, 70, 371, 451))
+        self.label_3 = QLabel(self.centralwidget)
+        self.label_3.setObjectName(u"label_3")
+        self.label_3.setGeometry(QRect(180, 40, 49, 16))
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QMenuBar(MainWindow)
+        self.menubar.setObjectName(u"menubar")
+        self.menubar.setGeometry(QRect(0, 0, 800, 33))
+        MainWindow.setMenuBar(self.menubar)
+        self.statusbar = QStatusBar(MainWindow)
+        self.statusbar.setObjectName(u"statusbar")
+        MainWindow.setStatusBar(self.statusbar)
 
+        self.retranslateUiLicenseeDetails(MainWindow)
+
+        QMetaObject.connectSlotsByName(MainWindow)
+
+    def retranslateUiLicenseeDetails(self, MainWindow):
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"Licensee view", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Notes", None))
+        self.label_3.setText(QCoreApplication.translate("MainWindow", u"Details", None))
+
+
+
+
+
+#Window Logic
 app = QApplication(sys.argv)
 
 window = MainWindow()
