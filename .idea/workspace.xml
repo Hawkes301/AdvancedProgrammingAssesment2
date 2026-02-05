@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="634bdaab-0ea4-44ca-a703-90597a3e727e" name="Changes" comment="Added licesee page">
-      <change afterPath="$PROJECT_DIR$/.venv/GitProjectFiles/DataFaking.py" afterDir="false" />
+    <list default="true" id="634bdaab-0ea4-44ca-a703-90597a3e727e" name="Changes" comment="licensee data">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.venv/GitProjectFiles/Licensee.py" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/GitProjectFiles/Licensee.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.venv/GitProjectFiles/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/GitProjectFiles/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.venv/GitProjectFiles/DataFaking.py" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/GitProjectFiles/DataFaking.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.venv/GitProjectFiles/Licensees.csv" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/GitProjectFiles/Licensees.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.venv/GitProjectFiles/RHU.py" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/GitProjectFiles/RHU.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,8 +167,27 @@
       <option name="project" value="LOCAL" />
       <updated>1769641799620</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="faking licensee data">
+      <option name="closed" value="true" />
+      <created>1770311248420</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1770311248420</updated>
+    </task>
+    <task id="LOCAL-00013" summary="licensee data">
+      <option name="closed" value="true" />
+      <created>1770311264169</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1770311264169</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.csv" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -203,6 +222,8 @@
     <MESSAGE value="Used QT designer to make main login window and dashboard" />
     <MESSAGE value="Login working and dashboard displays but not yet interactable" />
     <MESSAGE value="Added licesee page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added licesee page" />
+    <MESSAGE value="faking licensee data" />
+    <MESSAGE value="licensee data" />
+    <option name="LAST_COMMIT_MESSAGE" value="licensee data" />
   </component>
 </project>

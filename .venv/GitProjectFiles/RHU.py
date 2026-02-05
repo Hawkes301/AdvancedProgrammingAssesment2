@@ -1,11 +1,11 @@
 class Rehabilitation_Housing_Unit:
     def __init__(self,
+                 RHUID,
                  HousingCategory,
                  NighttimeCurfew,
                  WeekendCurfew,
                  Location,
-                 Licensees,
-                 SuitableYoungOffenders,
+                 SuitableForSexOffenders,
                  MedicalServiceAccess,
                  TransportLinks,
                  CulturalReligeousServices,
@@ -14,11 +14,6 @@ class Rehabilitation_Housing_Unit:
                  FamilyAccess,
                  Employment,
                  StayPeriod,
-                 FutureExpansion1,
-                 FutureExpansion2,
-                 FutureExpansion3,
-                 StudentSuggested1,
-                 StudentSuggested2,
                  CostPerBed,
                  Capacity,
                  EmergencyCapacity,
@@ -27,9 +22,8 @@ class Rehabilitation_Housing_Unit:
                  Phone,
                  Email,
                  Contact,
-                 ManagementGroup
                  ):
-
+        self.RHUID = RHUID
         self.HousingCategory = HousingCategory
         self.Location = Location
         self.StayPeriod = StayPeriod
@@ -41,10 +35,10 @@ class Rehabilitation_Housing_Unit:
         self.Phone = Phone
         self.Email = Email
         self.Contact = Contact
-        self.ManagementGroup = ManagementGroup
+        self.ManagementGroup = []
         self.Gender = Gender
-        self.Licensees = Licensees
-        self.SuitableYoungOffenders = SuitableForSexOffenders
+        self.Licensees = []
+        self.SuitableForSexOffenders = SuitableForSexOffenders
         self.NighttimeCurfew = NighttimeCurfew
         self.WeekendCurfew = WeekendCurfew
         self.MedicalServiceAccess = MedicalServiceAccess
@@ -53,9 +47,9 @@ class Rehabilitation_Housing_Unit:
         self.MentalHealthSuitable = MentalHealthSuitable
         self.Employment = Employment
         self.FamilyAccess = FamilyAccess
-        self.FutureExpansion1 = FutureExpansion1
-        self.FutureExpansion2 = FutureExpansion2
-        self.FutureExpansion3 = FutureExpansion3
-        self.StudentSuggested1 = StudentSuggested1
-        self.StudentSuggested2 = StudentSuggested2
+        self.FutureExpansion1 = FutureExpansion1 = []
+        self.FutureExpansion2 = FutureExpansion2 = []
+        self.FutureExpansion3 = FutureExpansion3 = []
+        self.StudentSuggested1 = StudentSuggested1 = []
+        self.StudentSuggested2 = StudentSuggested2 = []
         self.Notes = []
