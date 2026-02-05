@@ -1,3 +1,4 @@
+import csv
 import sys
 from PySide6.QtWidgets import *
 from PySide6.QtCore import *
@@ -8,15 +9,17 @@ from datetime import timedelta
 from Allocation import OnLicenceHousingAllocationSystem, Location
 from Licensee import Licensee
 from RHU import Rehabilitation_Housing_Unit
+import re
 
 
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow,self).__init__()
+        self.licensees = []
+        self.rhus = []
         self.setupUiLogin(self,"Password")
 
-        # Licensee creation
 
     def setupUiLogin(self, LoginWindow,Password):
         if not LoginWindow.objectName():
@@ -51,6 +54,64 @@ class MainWindow(QMainWindow):
         self.retranslateUiLogin(LoginWindow)
 
         QMetaObject.connectSlotsByName(LoginWindow)
+        self.readData()
+    def boolify(self,value):
+        return str(value).strip().lower() == "true"
+    def readData(self):
+        #Read RHUS
+        with open("RHUS.csv",newline = "") as file:
+            reader = csv.DictReader(file)
+            for row_number, row in enumerate(reader):
+                rhu = Rehabilitation_Housing_Unit(
+                    RHUID = int(row["RHUID"]),
+                    HousingCategory = row[" HousingCategory"],
+                    Location = row[" Location"],
+                    StayPeriod = int(row[" StayPeriod"]),
+                    CostPerBed = float(row[" CostPerBed"]),
+                    Capacity = int(row[" Capacity"]),
+                    EmergencyCapacity= int(row[" EmergencyCapacity"]),
+                    ShortTermBeds = int(row[" ShortTermBeds"]),
+                    Address = row[" Address"],
+                    Phone = row[" Phone"],
+                    Email = row[" Email"],
+                    Contact = row[" Contact"],
+                    Gender = row[" Gender"],
+                    SuitableForSexOffenders = self.boolify(row[" SuitableForSexOffenders"]),
+                    NighttimeCurfew = self.boolify(row[" NighttimeCurfew"]),
+                    WeekendCurfew = self.boolify(row[" WeekendCurfew"]),
+                    MedicalServiceAccess = self.boolify(row[" MedicalServiceAccess"]),
+                    TransportLinks = row[" TransportLinks"],
+                    CulturalReligeousServices = row[" CulturalReligeousServices"],
+                    MentalHealthSuitable = self.boolify(row[" MentalHealthSuitable"]),
+                    Employment = self.boolify(row[" Employment"]),
+                    FamilyAccess = self.boolify(row[" FamilyAccess"]),
+                    Notes = row[" Notes"],
+
+                )
+                self.rhus.append(rhu)
+        #Read Licensees
+        with open("Licensees.csv",newline = "") as file:
+            reader = csv.DictReader(file)
+            for row_number, row in enumerate(reader):
+                licensee = Licensee(
+                    Name = row["Name"],
+                    RoleID = row[" RoleID"],
+                    Gender = row[" Gender"],
+                    Category = row[" Category"],
+                    ReleaseDate = row[" ReleaseDate"],
+                    ExpectedLicenseEnd = row[" ExpectedLicenseEnd"],
+                    HomeAddress = row[" HomeAddress"],
+                    DrugSearchRequired = self.boolify(row[" DrugSearchRequired"]),
+                    SchoolExcluded = self.boolify(row[" SchoolExcluded"]),
+                    NightCurfew = self.boolify(row[" NightCurfew"]),
+                    WeekendCurfew = self.boolify(row[" WeekendCurfew"]),
+                    MentalHealthFlagged = self.boolify(row[" MentalHealthFlagged"]),
+                    Disability = self.boolify(row[" Disability"]),
+
+                )
+                self.licensees.append(licensee)
+
+
     def retranslateUiLogin(self, LoginWindow):
         LoginWindow.setWindowTitle(QCoreApplication.translate("LoginWindow", u"MainWindow", None))
         self.label.setText(QCoreApplication.translate("LoginWindow", u"Password:", None))
@@ -134,8 +195,8 @@ class MainWindow(QMainWindow):
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.tableWidget = QTableWidget(self.centralwidget)
-        if (self.tableWidget.columnCount() < 7):
-            self.tableWidget.setColumnCount(7)
+        if (self.tableWidget.columnCount() < 13):
+            self.tableWidget.setColumnCount(13)
         __qtablewidgetitem = QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem)
         __qtablewidgetitem1 = QTableWidgetItem()
@@ -150,6 +211,19 @@ class MainWindow(QMainWindow):
         self.tableWidget.setHorizontalHeaderItem(5, __qtablewidgetitem5)
         __qtablewidgetitem6 = QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(6, __qtablewidgetitem6)
+        __qtablewidgetitem7 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(7, __qtablewidgetitem7)
+        __qtablewidgetitem8 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(8, __qtablewidgetitem8)
+        __qtablewidgetitem9 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(9, __qtablewidgetitem9)
+        __qtablewidgetitem10 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(10, __qtablewidgetitem10)
+        __qtablewidgetitem11 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(11, __qtablewidgetitem11)
+        __qtablewidgetitem12 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(12, __qtablewidgetitem12)
+
         self.tableWidget.setObjectName(u"tableWidget")
         self.tableWidget.setGeometry(QRect(-5, 71, 801, 471))
         self.pushButton = QPushButton(self.centralwidget)
@@ -185,6 +259,24 @@ class MainWindow(QMainWindow):
         self.retranslateUiLicensees(MainWindow)
 
         QMetaObject.connectSlotsByName(MainWindow)
+        self.populateRowsLicense(self.tableWidget)
+    def populateRowsLicense(self,table):
+        for row in range(len(self.licensees)):
+            rowPosition = table.rowCount()
+            table.insertRow(rowPosition)
+            table.setItem(rowPosition,0,QTableWidgetItem(self.licensees[row].RoleID))
+            table.setItem(rowPosition, 1, QTableWidgetItem(self.licensees[row].Name))
+            table.setItem(rowPosition, 2, QTableWidgetItem(self.licensees[row].HomeAddress))
+            table.setItem(rowPosition, 3, QTableWidgetItem(self.licensees[row].Gender))
+            table.setItem(rowPosition, 4, QTableWidgetItem(self.licensees[row].ReleaseDate))
+            table.setItem(rowPosition, 5, QTableWidgetItem(self.licensees[row].Category))
+            table.setItem(rowPosition, 6, QTableWidgetItem(str(self.licensees[row].SchoolExcluded)))
+            table.setItem(rowPosition, 7, QTableWidgetItem(str(self.licensees[row].MentalHealthFlagged)))
+            table.setItem(rowPosition, 8, QTableWidgetItem(self.licensees[row].ExpectedLicenseEnd))
+            table.setItem(rowPosition, 9, QTableWidgetItem(str(self.licensees[row].DrugSearchRequired)))
+            table.setItem(rowPosition, 10, QTableWidgetItem(str(self.licensees[row].NightCurfew)))
+            table.setItem(rowPosition, 11, QTableWidgetItem(str(self.licensees[row].WeekendCurfew)))
+            table.setItem(rowPosition, 12, QTableWidgetItem(str(self.licensees[row].Disability)))
 
     def retranslateUiLicensees(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
@@ -199,9 +291,21 @@ class MainWindow(QMainWindow):
         ___qtablewidgetitem4 = self.tableWidget.horizontalHeaderItem(4)
         ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"ReleaseDate", None));
         ___qtablewidgetitem5 = self.tableWidget.horizontalHeaderItem(5)
-        ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindow", u"Location", None));
+        ___qtablewidgetitem5.setText(QCoreApplication.translate("MainWindow", u"Category", None));
         ___qtablewidgetitem6 = self.tableWidget.horizontalHeaderItem(6)
-        ___qtablewidgetitem6.setText(QCoreApplication.translate("MainWindow", u"Category", None));
+        ___qtablewidgetitem6.setText(QCoreApplication.translate("MainWindow", u"SchoolExcluded", None));
+        ___qtablewidgetitem7 = self.tableWidget.horizontalHeaderItem(7)
+        ___qtablewidgetitem7.setText(QCoreApplication.translate("MainWindow", u"MentalHealthFlagged", None));
+        ___qtablewidgetitem8 = self.tableWidget.horizontalHeaderItem(8)
+        ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"ExpectedLicenseEnd", None));
+        ___qtablewidgetitem9 = self.tableWidget.horizontalHeaderItem(9)
+        ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindow", u"DrugSearchRequired", None));
+        ___qtablewidgetitem10 = self.tableWidget.horizontalHeaderItem(10)
+        ___qtablewidgetitem10.setText(QCoreApplication.translate("MainWindow", u"NightCurfew", None));
+        ___qtablewidgetitem11 = self.tableWidget.horizontalHeaderItem(11)
+        ___qtablewidgetitem11.setText(QCoreApplication.translate("MainWindow", u"WeekendCurfew", None));
+        ___qtablewidgetitem12 = self.tableWidget.horizontalHeaderItem(12)
+        ___qtablewidgetitem12.setText(QCoreApplication.translate("MainWindow", u"Disability", None));
         self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Find Home", None))
         self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"View Notes", None))
         self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"Delete", None))

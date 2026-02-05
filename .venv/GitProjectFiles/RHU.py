@@ -22,6 +22,7 @@ class Rehabilitation_Housing_Unit:
                  Phone,
                  Email,
                  Contact,
+                 Notes
                  ):
         self.RHUID = RHUID
         self.HousingCategory = HousingCategory
