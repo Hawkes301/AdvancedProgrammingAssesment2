@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="634bdaab-0ea4-44ca-a703-90597a3e727e" name="Changes" comment="Big changes">
+    <list default="true" id="634bdaab-0ea4-44ca-a703-90597a3e727e" name="Changes" comment="Added matching. next need to add poppup if not compattable and then assign to house if specified then done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.venv/GitProjectFiles/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/GitProjectFiles/Main.py" afterDir="false" />
     </list>
@@ -197,7 +197,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770331827059</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Added matching. next need to add poppup if not compattable and then assign to house if specified then done">
+      <option name="closed" value="true" />
+      <created>1770347942026</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1770347942026</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -240,6 +248,7 @@
     <MESSAGE value="licensee data" />
     <MESSAGE value="Faked rhu data" />
     <MESSAGE value="Big changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Big changes" />
+    <MESSAGE value="Added matching. next need to add poppup if not compattable and then assign to house if specified then done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added matching. next need to add poppup if not compattable and then assign to house if specified then done" />
   </component>
 </project>

@@ -1,5 +1,7 @@
 import csv
 import sys
+from turtledemo.penrose import start
+
 from PySide6.QtWidgets import *
 from PySide6.QtCore import *
 from PySide6.QtGui import *
@@ -43,6 +45,8 @@ class MainWindow(QMainWindow):
         self.licensees = []
         self.rhus = []
         self.setupUiLogin(self,"Password")
+        self.results = []
+        self.currentLicensee = Licensee
 
 
     def setupUiLogin(self, LoginWindow,Password):
@@ -178,18 +182,24 @@ class MainWindow(QMainWindow):
             self.statusbar.setObjectName(u"statusbar")
             AssignWindow.setStatusBar(self.statusbar)
 
-            # Assign Housing button
-            self.pushButton.setCheckable(True)
-            self.pushButton.clicked.connect(self.AssignButtonPressed)
 
             self.retranslateUiAssign(AssignWindow)
 
             QMetaObject.connectSlotsByName(AssignWindow)
-            self.populateRowsAssign(self.FindHome(),self.tableWidget)
+            self.results = self.populateRowsAssign(self.FindHome(),self.tableWidget)
+
+            # Assign Housing button
+            self.pushButton.setCheckable(True)
+            self.pushButton.clicked.connect(self.AssignButtonPressed)
 
 
     def AssignButtonPressed(self):
-
+        rhu = self.results[(self.tableWidget.currentRow())]
+        if not rhu.conflicts:
+            print("no conflicts")
+        else:
+            for x in rhu.conflicts:
+                print(x)
     def retranslateUiAssign(self, AssignWindow):
             AssignWindow.setWindowTitle(QCoreApplication.translate("AssignWindow", u"MainWindow", None))
             ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
@@ -218,6 +228,7 @@ class MainWindow(QMainWindow):
             table.setItem(rowPosition, 3, QTableWidgetItem(results[row].rhu.Gender))
             table.setItem(rowPosition, 4, QTableWidgetItem(str(results[row].rhu.CostPerBed)))
             table.setItem(rowPosition, 5, QTableWidgetItem(results[row].rhu.Address))
+        return results
 
 
 
@@ -377,9 +388,11 @@ class MainWindow(QMainWindow):
         self.populateRowsLicense(self.tableWidget)
     def FindButtonPressed(self):
         self.setupUiAssign(self)
+
     def FindHome(self):
 
-        licensee = self.licensees[(self.tableWidget.currentRow()-1)]
+        licensee = self.currentLicensee
+
 
         self.label_2.setText(f"RoleID {licensee.RoleID}")
         results = []
@@ -390,11 +403,13 @@ class MainWindow(QMainWindow):
             if rhu.Gender == "Mixed" or rhu.Gender == licensee.Gender:
                 score += 2
             else:
+                score -= 1
                 conflicts.append("Uncompattible Gender")
 
 
 
             if licensee.SchoolExcluded and not(rhu.SuitableForSexOffenders):
+                score -= 2
                 conflicts.append("Near a school")
 
 
@@ -402,12 +417,14 @@ class MainWindow(QMainWindow):
                 if rhu.NighttimeCurfew:
                     score += 1
                 else:
+                    score -= 1
                     conflicts.append("Nighttime curfew not supported")
 
             if licensee.WeekendCurfew:
                 if rhu.WeekendCurfew:
                     score += 1
                 else:
+                    score -= 1
                     conflicts.append("Weekend curfew not supported")
 
 
@@ -415,6 +432,7 @@ class MainWindow(QMainWindow):
                 if rhu.MentalHealthSuitable:
                     score += 1
                 else:
+                    score -= 1
                     conflicts.append("Mental health needs not supported")
 
             # Cost awareness (cheaper RHUs score higher)
@@ -424,6 +442,7 @@ class MainWindow(QMainWindow):
             results.append(MatchResult(rhu, score, conflicts,licensee))
 
 
+
         results.sort(key=lambda result: result.score, reverse=True)
 
         return results
@@ -431,6 +450,7 @@ class MainWindow(QMainWindow):
     def on_cell_clicked1(self, row, column):
         self.label.setText(f"{self.tableWidget.item(row,1).text()}")
         self.label_2.setText(f"RoleID {self.tableWidget.item(row,0).text()}")
+        self.currentLicensee = self.licensees[(self.tableWidget.currentRow())]
     def on_cell_clicked2(self,row,column):
         self.label.setText(f"RHUID {self.tableWidget.item(row,0).text()}")
     def populateRowsLicense(self,table):
