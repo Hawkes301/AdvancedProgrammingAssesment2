@@ -94,7 +94,8 @@ licenseeHeaders = ['Name',
                  'NightCurfew',
                  'WeekendCurfew',
                  'MentalHealthFlagged',
-                 'Disability']
+                 'Disability',
+                 'CurrentRHU']
 
 save("Licensees.csv",licenseeData,licenseeHeaders)
 
