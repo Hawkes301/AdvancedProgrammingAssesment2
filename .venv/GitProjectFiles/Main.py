@@ -12,7 +12,31 @@ from RHU import Rehabilitation_Housing_Unit
 import re
 
 
+class MatchResult:
+    def __init__(self,rhu,score,conflicts,licensee):
+        self.rhu = rhu
+        self.score = score
+        self.conflicts = conflicts
+        self.licensee = licensee
+class CustomDialog(QDialog):
+    def __init__(self):
+        super().__init__()
 
+        self.setWindowTitle("Important")
+
+        QBtn = (
+            QDialogButtonBox.Ok | QDialogButtonBox.Cancel
+        )
+
+        self.buttonBox = QDialogButtonBox(QBtn)
+        self.buttonBox.accepted.connect(self.accept)
+        self.buttonBox.rejected.connect(self.reject)
+
+        layout = QVBoxLayout()
+        message = QLabel("Conflicts found is that ok?")
+        layout.addWidget(message)
+        layout.addWidget(self.buttonBox)
+        self.setLayout(layout)
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow,self).__init__()
@@ -63,7 +87,7 @@ class MainWindow(QMainWindow):
             reader = csv.DictReader(file)
             for row_number, row in enumerate(reader):
                 rhu = Rehabilitation_Housing_Unit(
-                    RHUID = int(row["RHUID"]),
+                    RHUID = row["RHUID"],
                     HousingCategory = row[" HousingCategory"],
                     Location = row[" Location"],
                     StayPeriod = int(row[" StayPeriod"]),
@@ -110,6 +134,91 @@ class MainWindow(QMainWindow):
 
                 )
                 self.licensees.append(licensee)
+
+
+    def setupUiAssign(self, AssignWindow):
+            if not AssignWindow.objectName():
+                AssignWindow.setObjectName(u"AssignWindow")
+            AssignWindow.resize(800, 600)
+            self.centralwidget = QWidget(AssignWindow)
+            self.centralwidget.setObjectName(u"centralwidget")
+            self.tableWidget = QTableWidget(self.centralwidget)
+            if (self.tableWidget.columnCount() < 6):
+                self.tableWidget.setColumnCount(6)
+            __qtablewidgetitem = QTableWidgetItem()
+            self.tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem)
+            __qtablewidgetitem1 = QTableWidgetItem()
+            self.tableWidget.setHorizontalHeaderItem(1, __qtablewidgetitem1)
+            __qtablewidgetitem2 = QTableWidgetItem()
+            self.tableWidget.setHorizontalHeaderItem(2, __qtablewidgetitem2)
+            __qtablewidgetitem3 = QTableWidgetItem()
+            self.tableWidget.setHorizontalHeaderItem(3, __qtablewidgetitem3)
+            __qtablewidgetitem4 = QTableWidgetItem()
+            self.tableWidget.setHorizontalHeaderItem(4, __qtablewidgetitem4)
+            __qtablewidgetitem5 = QTableWidgetItem()
+            self.tableWidget.setHorizontalHeaderItem(5, __qtablewidgetitem5)
+            self.tableWidget.cellClicked.connect(self.on_cell_clicked2)
+            self.tableWidget.setObjectName(u"tableWidget")
+            self.tableWidget.setGeometry(QRect(10, 50, 771, 481))
+            self.label = QLabel(self.centralwidget)
+            self.label.setObjectName(u"label")
+            self.label.setGeometry(QRect(30, 20, 101, 16))
+            self.label_2 = QLabel(self.centralwidget)
+            self.label_2.setObjectName(u"label_2")
+            self.label_2.setGeometry(QRect(140, 20, 121, 16))
+            self.pushButton = QPushButton(self.centralwidget)
+            self.pushButton.setObjectName(u"pushButton")
+            self.pushButton.setGeometry(QRect(280, 10, 171, 26))
+            AssignWindow.setCentralWidget(self.centralwidget)
+            self.menubar = QMenuBar(AssignWindow)
+            self.menubar.setObjectName(u"menubar")
+            self.menubar.setGeometry(QRect(0, 0, 800, 33))
+            AssignWindow.setMenuBar(self.menubar)
+            self.statusbar = QStatusBar(AssignWindow)
+            self.statusbar.setObjectName(u"statusbar")
+            AssignWindow.setStatusBar(self.statusbar)
+
+            # Assign Housing button
+            self.pushButton.setCheckable(True)
+            self.pushButton.clicked.connect(self.AssignButtonPressed)
+
+            self.retranslateUiAssign(AssignWindow)
+
+            QMetaObject.connectSlotsByName(AssignWindow)
+            self.populateRowsAssign(self.FindHome(),self.tableWidget)
+
+
+    def AssignButtonPressed(self):
+
+    def retranslateUiAssign(self, AssignWindow):
+            AssignWindow.setWindowTitle(QCoreApplication.translate("AssignWindow", u"MainWindow", None))
+            ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
+            ___qtablewidgetitem.setText(QCoreApplication.translate("AssignWindow", u"RHUID", None));
+            ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)
+            ___qtablewidgetitem1.setText(QCoreApplication.translate("AssignWindow", u"HousingCategory", None));
+            ___qtablewidgetitem2 = self.tableWidget.horizontalHeaderItem(2)
+            ___qtablewidgetitem2.setText(QCoreApplication.translate("AssignWindow", u"SuitableForSexOffendors", None));
+            ___qtablewidgetitem3 = self.tableWidget.horizontalHeaderItem(3)
+            ___qtablewidgetitem3.setText(QCoreApplication.translate("AssignWindow", u"Gender", None));
+            ___qtablewidgetitem4 = self.tableWidget.horizontalHeaderItem(4)
+            ___qtablewidgetitem4.setText(QCoreApplication.translate("AssignWindow", u"CostPerBed", None));
+            ___qtablewidgetitem5 = self.tableWidget.horizontalHeaderItem(5)
+            ___qtablewidgetitem5.setText(QCoreApplication.translate("AssignWindow", u"Address", None));
+            self.label.setText(QCoreApplication.translate("AssignWindow", u"RHUID", None))
+            self.label_2.setText(QCoreApplication.translate("AssignWindow", u"RoleID", None))
+            self.pushButton.setText(QCoreApplication.translate("AssignWindow", u"Assign Selected House", None))
+
+    def populateRowsAssign(self,results,table):
+        for row in range(len(results)):
+            rowPosition = table.rowCount()
+            table.insertRow(rowPosition)
+            table.setItem(rowPosition,0,QTableWidgetItem(results[row].rhu.RHUID))
+            table.setItem(rowPosition, 1, QTableWidgetItem(results[row].rhu.HousingCategory))
+            table.setItem(rowPosition, 2, QTableWidgetItem(str(results[row].rhu.SuitableForSexOffenders)))
+            table.setItem(rowPosition, 3, QTableWidgetItem(results[row].rhu.Gender))
+            table.setItem(rowPosition, 4, QTableWidgetItem(str(results[row].rhu.CostPerBed)))
+            table.setItem(rowPosition, 5, QTableWidgetItem(results[row].rhu.Address))
+
 
 
     def retranslateUiLogin(self, LoginWindow):
@@ -224,10 +333,12 @@ class MainWindow(QMainWindow):
         __qtablewidgetitem12 = QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(12, __qtablewidgetitem12)
 
+        self.tableWidget.cellClicked.connect(self.on_cell_clicked1)
+
         self.tableWidget.setObjectName(u"tableWidget")
         self.tableWidget.setGeometry(QRect(-5, 71, 801, 471))
         self.pushButton = QPushButton(self.centralwidget)
-        self.pushButton.setObjectName(u"pushButton")
+        self.pushButton.setObjectName(u"FindHome")
         self.pushButton.setGeometry(QRect(520, 30, 81, 26))
         self.pushButton_2 = QPushButton(self.centralwidget)
         self.pushButton_2.setObjectName(u"pushButton_2")
@@ -256,10 +367,72 @@ class MainWindow(QMainWindow):
         self.statusbar.setObjectName(u"statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
+        #Find home button
+        self.pushButton.setCheckable(True)
+        self.pushButton.clicked.connect(self.FindButtonPressed)
+
         self.retranslateUiLicensees(MainWindow)
 
         QMetaObject.connectSlotsByName(MainWindow)
         self.populateRowsLicense(self.tableWidget)
+    def FindButtonPressed(self):
+        self.setupUiAssign(self)
+    def FindHome(self):
+
+        licensee = self.licensees[(self.tableWidget.currentRow()-1)]
+
+        self.label_2.setText(f"RoleID {licensee.RoleID}")
+        results = []
+        for rhu in self.rhus:
+            score = 0
+            conflicts = []
+
+            if rhu.Gender == "Mixed" or rhu.Gender == licensee.Gender:
+                score += 2
+            else:
+                conflicts.append("Uncompattible Gender")
+
+
+
+            if licensee.SchoolExcluded and not(rhu.SuitableForSexOffenders):
+                conflicts.append("Near a school")
+
+
+            if licensee.NightCurfew:
+                if rhu.NighttimeCurfew:
+                    score += 1
+                else:
+                    conflicts.append("Nighttime curfew not supported")
+
+            if licensee.WeekendCurfew:
+                if rhu.WeekendCurfew:
+                    score += 1
+                else:
+                    conflicts.append("Weekend curfew not supported")
+
+
+            if licensee.MentalHealthFlagged:
+                if rhu.MentalHealthSuitable:
+                    score += 1
+                else:
+                    conflicts.append("Mental health needs not supported")
+
+            # Cost awareness (cheaper RHUs score higher)
+            if rhu.CostPerBed < 80:
+                score += 1
+
+            results.append(MatchResult(rhu, score, conflicts,licensee))
+
+
+        results.sort(key=lambda result: result.score, reverse=True)
+
+        return results
+
+    def on_cell_clicked1(self, row, column):
+        self.label.setText(f"{self.tableWidget.item(row,1).text()}")
+        self.label_2.setText(f"RoleID {self.tableWidget.item(row,0).text()}")
+    def on_cell_clicked2(self,row,column):
+        self.label.setText(f"RHUID {self.tableWidget.item(row,0).text()}")
     def populateRowsLicense(self,table):
         for row in range(len(self.licensees)):
             rowPosition = table.rowCount()
