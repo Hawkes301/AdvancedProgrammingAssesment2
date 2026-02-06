@@ -463,12 +463,6 @@ class MainWindow(QMainWindow):
         self.label.setText(QCoreApplication.translate("MainWindow", u"Name", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"RoleID", None))
 
-
-
-
-
-
-
 #Window Logic
 app = QApplication(sys.argv)
 
