@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="634bdaab-0ea4-44ca-a703-90597a3e727e" name="Changes" comment="Fixed Bugs">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="634bdaab-0ea4-44ca-a703-90597a3e727e" name="Changes" comment="Saves Selection. All done.">
+      <change beforePath="$PROJECT_DIR$/.venv/GitProjectFiles/Allocation.py" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/GitProjectFiles/Allocation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.venv/GitProjectFiles/DataFaking.py" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/GitProjectFiles/DataFaking.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.venv/GitProjectFiles/Key notes" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/GitProjectFiles/Key notes" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.venv/GitProjectFiles/Licensee.py" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/GitProjectFiles/Licensee.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.venv/GitProjectFiles/Licensees.csv" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/GitProjectFiles/Licensees.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.venv/GitProjectFiles/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/GitProjectFiles/Main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.venv/GitProjectFiles/RHU.py" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/GitProjectFiles/RHU.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.venv/GitProjectFiles/RHUS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/GitProjectFiles/RHUS.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,7 +217,31 @@
       <option name="project" value="LOCAL" />
       <updated>1770380225815</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Saves Selection. All done">
+      <option name="closed" value="true" />
+      <created>1770386478841</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1770386478841</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Saves Selection. All done">
+      <option name="closed" value="true" />
+      <created>1770386529050</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1770386529050</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Saves Selection. All done.">
+      <option name="closed" value="true" />
+      <created>1770386561495</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1770386561495</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -263,6 +286,8 @@
     <MESSAGE value="Big changes" />
     <MESSAGE value="Added matching. next need to add poppup if not compattable and then assign to house if specified then done" />
     <MESSAGE value="Fixed Bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed Bugs" />
+    <MESSAGE value="Saves Selection. All done" />
+    <MESSAGE value="Saves Selection. All done." />
+    <option name="LAST_COMMIT_MESSAGE" value="Saves Selection. All done." />
   </component>
 </project>

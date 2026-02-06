@@ -1,3 +1,5 @@
+#Reuben Hawkes
+#W24014386
 class Licensee:
     def __init__(self,
                  Name,
